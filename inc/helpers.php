@@ -20,8 +20,8 @@ if( !function_exists('isha_wcpg_get_product_price_html') ) {
 		if($product->is_on_sale()) {
 			// Get percentage of discount
 			$perc = (($product->get_regular_price() - $product->get_sale_price()) / $product->get_regular_price()) * 100;
-			$html = '<span class="isha-product-reg-price"><s>' . get_woocommerce_currency_symbol() . $product->get_regular_price() . '</s></span>';
-			$html .= ' <span class="isha-product-sale-price">' . get_woocommerce_currency_symbol() . $product->get_sale_price() . '</span>';
+			$html = '<span class="isha-product-sale-price">' . get_woocommerce_currency_symbol() . $product->get_sale_price() . '</span>';
+			$html .= '<span class="isha-product-reg-price"><s>' . get_woocommerce_currency_symbol() . $product->get_regular_price() . '</s></span>';
 			$html .= " <span class='isha-product-percentage'>-$perc%</span>";
 		}
 		return $html;

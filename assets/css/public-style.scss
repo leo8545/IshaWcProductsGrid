@@ -1,4 +1,5 @@
 .isha-products {
+	max-width: 100%;
 	padding: 10px 0;
 	list-style: none;
 	display: grid;
@@ -23,7 +24,13 @@
 			.isha-product-title {
 				a {
 					color: #000;
-					line-height: 1em;
+					line-height: 18px;
+					height: 36px;
+					display: -webkit-box;
+					-webkit-box-orient: vertical;
+					overflow: hidden;
+					-webkit-line-clamp: 2;
+					font-size: 14px;
 				}
 			}
 			.isha-product-price {
@@ -40,6 +47,8 @@
 				.isha-product-sale-price {
 					color: #026402;
 					font-weight: 600;
+					display: inline-block;
+					padding-right: 5px;
 				}
 				.isha-product-percentage {
 					color: #fff;

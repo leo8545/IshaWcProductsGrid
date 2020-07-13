@@ -39,6 +39,7 @@ final class Isha_WCPG
 	{
 		$dir = ISHA_WCPG_URI . "/assets/";
 		wp_enqueue_style("isha-wcpg-style", $dir . "css/public-style.min.css", [], ISHA_WCPG_VERSION);
+		wp_enqueue_script("isha-wcpg-script", $dir . "js/public-main.js", [], ISHA_WCPG_VERSION);
 	}
 
 	public function shortcode_callback($atts)
