@@ -65,3 +65,21 @@ if(!function_exists("isha_wcpg_get_product_cat_html")) {
 		return $html;
 	}
 }
+
+if( !function_exists("isha_wcpg_is_falsy") ) {
+	/**
+	 * Checks if the argument is falsy or not
+	 *
+	 * @param mixed $arg
+	 * @return boolean
+	 */
+	function isha_wcpg_is_falsy($arg) {
+		$type = gettype($arg);
+		if($type === "boolean" && $arg === false) return true;
+		if($type === "string" && (empty($arg) || $arg === "false" || $arg === "0" || $arg === "null")) return true;
+		if($type === "integer" && $arg === 0) return true;
+		if($type === "array" && count($arg) === 0) return true;
+		if($type === "NULL") return true;
+		return false;
+	}
+}

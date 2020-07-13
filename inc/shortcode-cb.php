@@ -21,13 +21,13 @@ $count = ((int) $atts['count']) === 0 ? 10 : (int) $atts['count'];
 $args['posts_per_page'] = $count;
 
 // Featured products
-if( (bool) $atts['featured'] !== false ) {
+if(!isha_wcpg_is_falsy($atts['featured'])) {
 	$args['post__in'] = wc_get_featured_product_ids();
 	$classes[] = "isha-featured-products";
 }
 
 // On sale products
-if( (bool) $atts['onsale'] !== false ) {
+if( !isha_wcpg_is_falsy($atts['onsale']) ) {
 	$args['meta_query'] = [
 		'relation' => 'OR',
 		[ // Simple products
