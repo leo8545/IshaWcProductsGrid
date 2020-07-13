@@ -56,6 +56,7 @@ final class Isha_WCPG
 			"orderby" 	=> 	'date',
 			"cats"		=>		'',
 			"tags"		=>		'',
+			"best_seller" => false
 		], $atts);
 
 		ob_start();

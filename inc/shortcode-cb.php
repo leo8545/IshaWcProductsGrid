@@ -21,9 +21,18 @@ $count = ((int) $atts['count']) === 0 ? 10 : (int) $atts['count'];
 $args['posts_per_page'] = $count;
 
 // Featured products
+$tax_query = [];
 if(!isha_wcpg_is_falsy($atts['featured'])) {
-	$args['post__in'] = wc_get_featured_product_ids();
-	$classes[] = "isha-featured-products";
+	// $args['post__in'] = wc_get_featured_product_ids();
+	$tax_query[] = array(
+		'taxonomy' => 'product_visibility',
+		'field'    => 'name',
+		'terms'    => 'featured',
+		'operator' => 'IN', // or 'NOT IN' to exclude feature products
+	);
+	if(count(wc_get_featured_product_ids()) > 0) {
+		$classes[] = "isha-featured-products";
+	}
 }
 
 // On sale products
@@ -64,8 +73,7 @@ if( !empty( $atts['cats'] ) ) {
 		'taxonomy' => 'product_cat',
 		'field' => 'slug',
 		'terms' => explode(",", $atts['cats'])
-	 ];
-	 $args['tax_query'] = $tax_query;
+	];
 }
 
 // Get products by tags
@@ -75,8 +83,25 @@ if( !empty( $atts['tags'] ) ) {
 		'field' => 'slug',
 		'terms' => explode(",", $atts['tags'])
 	 ];
-	 $args['tax_query'] = $tax_query;
 }
+
+// Get best sellers
+if( !isha_wcpg_is_falsy($atts['best_seller']) ) {
+	$args['meta_key'] = 'total_sales';
+	$args['orderby'] = 'meta_value_num';
+	$args['meta_query'][] =  [
+		'key' => 'total_sales',
+		'value' => 0,
+		'compare' => '>'
+	];
+	$classes[] = "isha-products-bestseller";
+}
+
+if( count($tax_query) > 0 ) {
+	$tax_query['relation'] = "AND";
+}
+
+$args['tax_query'] = $tax_query;
 
 $query = new WP_Query($args);
 
