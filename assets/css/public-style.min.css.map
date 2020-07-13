@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "public-style.scss"
+    ],
+    "names": [],
+    "file": "public-style.min.css"
+}
