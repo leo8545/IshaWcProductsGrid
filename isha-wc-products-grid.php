@@ -18,7 +18,13 @@ final class Isha_WCPG
 {
 	public function __construct()
 	{
+		$this->load_dep();
 		$this->define_public_hooks();
+	}
+
+	public function load_dep()
+	{
+		require ISHA_WCPG_DIR . 'inc/helpers.php';
 	}
 
 	public function define_public_hooks()
@@ -39,14 +45,16 @@ final class Isha_WCPG
 	{
 		/**
 		 * Attributes
-		 * count, featured, onsale, latest, random
+		 * count, featured, onsale, random
 		 */
 		$atts = shortcode_atts([
 			"count" 		=> 	10,
 			"featured" 	=> 	false,
 			"onsale" 	=> 	false,
-			"latest" 	=> 	false,
-			"random" 	=> 	false
+			"order" 		=> 	'desc',
+			"orderby" 	=> 	'date',
+			"cats"		=>		'',
+			"tags"		=>		'',
 		], $atts);
 
 		ob_start();

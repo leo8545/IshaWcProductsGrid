@@ -1,1 +1,54 @@
-
+.isha-products {
+	padding: 10px 0;
+	list-style: none;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	.isha-product {
+		margin: 3px;
+		border: 1px solid #ddd;
+		&-body {
+			padding: 10px;
+			.isha-product-category {
+				margin-bottom: 3px;
+				a {
+					font-size: 10px;
+					letter-spacing: 1px;
+					text-transform: uppercase;
+					background: #aaa;
+					color: #fff;
+					padding: 0 2px;
+					text-decoration: none;
+				}
+			}
+			.isha-product-title {
+				a {
+					color: #000;
+					line-height: 1em;
+				}
+			}
+			.isha-product-price {
+				margin-top: 10px;
+				.isha-product-gen-price {
+					color: #474747;
+					font-size: 90%;
+					font-weight: 600;
+				}
+				.isha-product-reg-price {
+					color: #555;
+					font-size: 90%;
+				}
+				.isha-product-sale-price {
+					color: #026402;
+					font-weight: 600;
+				}
+				.isha-product-percentage {
+					color: #fff;
+					background-color: #f44;
+					padding: 0 3px;
+					font-size: 90%;
+					font-weight: 600;
+				}
+			}
+		}
+	}
+}
