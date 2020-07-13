@@ -1,12 +1,26 @@
 .isha-products {
-	max-width: 100%;
+	$mobileWidth: 450px;
+	max-width: 100% !important;
 	padding: 10px 0;
 	list-style: none;
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
+	@media (max-width: $mobileWidth) {
+		grid-template-columns: repeat(2, 1fr);
+	}
 	.isha-product {
+		$maxHeight: 180px;
 		margin: 3px;
 		border: 1px solid #ddd;
+		&-head {
+			img {
+				display: block;
+				margin: 0 auto;
+				@media (max-width: $mobileWidth) {
+					max-height: $maxHeight;
+				}
+			}
+		}
 		&-body {
 			padding: 10px;
 			.isha-product-category {
