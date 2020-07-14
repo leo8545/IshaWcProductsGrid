@@ -31,8 +31,11 @@ final class Isha_WCPG
 	{
 		add_action("wp_enqueue_scripts", [$this, "enqueue_public_scripts"]);
 
-		// Shortcode
+		// Shortcode to show products
 		add_shortcode("isha_wc_products", [$this, "shortcode_callback"]);
+
+		// Shortcode to show categories
+		add_shortcode("isha_wc_categories", [$this, "shortcode_categories_callback"]);
 	}
 
 	public function enqueue_public_scripts()
@@ -61,6 +64,21 @@ final class Isha_WCPG
 
 		ob_start();
 		require ISHA_WCPG_DIR . "inc/shortcode-cb.php";
+		$output = ob_get_clean();
+		return $output;
+	}
+
+	public function shortcode_categories_callback($atts)
+	{
+		$atts = shortcode_atts([
+			"count" => 8,
+			'orderby' => 'count',
+			'order' => 'desc',
+			'show_uncat' => true
+		], $atts);
+
+		ob_start();
+		require ISHA_WCPG_DIR . "inc/shortcode_categories_cb.php";
 		$output = ob_get_clean();
 		return $output;
 	}

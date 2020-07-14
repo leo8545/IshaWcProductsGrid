@@ -83,3 +83,21 @@ if( !function_exists("isha_wcpg_is_falsy") ) {
 		return false;
 	}
 }
+
+if( !function_exists('isha_wcpg_get_cat_image') ) {
+	/**
+	 * Returns image element for wc category
+	 *
+	 * @param WP_Term $term
+	 * @return string
+	 */
+	function isha_wcpg_get_cat_image($term) {
+		$imageId = get_term_meta($term->term_id, 'thumbnail_id', true);
+		if($imageId !== 0 && wp_get_attachment_image_src($imageId)) {
+			$src = wp_get_attachment_image_src($imageId)[0];
+		} else {
+			$src = wc_placeholder_img_src('thumbnail');
+		}
+		return "<img src='$src' class='isha_cat_image' />";
+	}
+}
