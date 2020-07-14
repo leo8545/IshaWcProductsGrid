@@ -1,6 +1,7 @@
 $primaryColor: #00a08b;
+$mobileWidth: 450px;
+$desktopWidth: 1150px;
 .isha-products {
-	$mobileWidth: 450px;
 	max-width: 100% !important;
 	padding: 10px 0;
 	list-style: none;
@@ -105,14 +106,24 @@ $primaryColor: #00a08b;
 	list-style: none;
 	display: grid;
 	grid-template-columns: repeat(8, 1fr);
+	@media (max-width: $mobileWidth) {
+		grid-template-columns: repeat(3, 1fr);
+	}
 	& > .isha-cat {
 		a {
 			text-decoration: none;
 			color: #5a5a5a;
 		}
 		border: 1px solid #ddd;
-		&:not(:last-child) {
-			border-right: none;
+		@media (min-width: $desktopWidth) {
+			&:not(:nth-child(8n)) {
+				border-right: none;
+			}
+		}
+		@media (max-width: $mobileWidth) {
+			&:not(:nth-child(3n)) {
+				border-right: none;
+			}
 		}
 		background-color: #fff;
 		text-align: center;
@@ -130,5 +141,32 @@ $primaryColor: #00a08b;
 				color: $primaryColor !important;
 			}
 		}
+	}
+}
+.isha_cats_on_prod_wrapper {
+	.isha_cats_list {
+		max-width: 100% !important;
+		padding: 0;
+		margin: 10px 0;
+		list-style: none;
+		& > li {
+			display: inline;
+			margin-right: 10px;
+			cursor: pointer;
+			span {
+				padding: 5px 20px;
+				background-color: #fff;
+			}
+			&.isha-active {
+				span {
+					border-radius: 20px;
+					background-color: $primaryColor;
+					color: #fff;
+				}
+			}
+		}
+	}
+	.isha-loading {
+		min-height: 332px;
 	}
 }
