@@ -171,4 +171,12 @@ $desktopWidth: 1150px;
 	.isha-loading {
 		min-height: 332px;
 	}
+	.isha_cats_products_wrapper {
+		& > ul.isha-products {
+			display: none;
+			&.isha-active-list {
+				display: grid;
+			}
+		}
+	}
 }

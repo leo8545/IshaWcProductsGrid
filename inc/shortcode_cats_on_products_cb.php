@@ -69,7 +69,7 @@ $query = new WP_Query($args);
 		</ul>
 	<?php endif; ?>
 	<div class="isha_cats_products_wrapper">
-		<ul class="isha_products_list isha-products">
+		<ul class="isha_products_list isha-products isha-active-list" data-cat_id='<?php echo $categories[0]->term_id ?>'>
 			<?php if(count($query->posts) > 0) : ?>
 				<?php foreach( $query->posts as $_product ): $product = wc_get_product($_product); ?>
 					<?php require ISHA_WCPG_DIR . "inc/product_card.php" ?>
