@@ -18,21 +18,37 @@ if( !empty( $atts['cats'] ) ) {
 		}
 	}
 } else {
+	// Get categories
+
+	// Show uncategorized?
 	if( !isha_wcpg_is_falsy($atts['show_uncat'])) {
 		$exclude = [get_term_by("slug", "uncategorized", "product_cat")->term_id];
 	} else {
 		$exclude = "all";
 	}
+
+	// Cats orderby
+	$cats_orderby = 'count';
+	if( !empty($atts['cats_orderby']) && in_array( $atts['cats_orderby'], ['name', 'count'] ) ) {
+		$cats_orderby = $atts['cats_orderby'];
+	}
+
 	$categories = get_terms([
 		'taxonomy' => 'product_cat', 
 		'number' => (int) $atts['cats_count'],
-		'exclude' => $exclude
+		'exclude' => $exclude,
+		'orderby' => $cats_orderby,
+		'order' => 'desc'
 	]);
 }
 
 $args = [
 	'post_type' => 'product',
 	'post_status' => 'publish',
+	'meta_query' => [[
+		'key' => '_thumbnail_id',
+		'compare' => 'EXISTS'
+	]],
 	'tax_query' => [[
 		'taxonomy' => 'product_cat',
 		'field' => 'slug',

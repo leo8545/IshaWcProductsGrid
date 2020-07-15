@@ -99,7 +99,8 @@ final class Isha_WCPG
 			'cats_count' => 5,
 			'product_count' => 5,
 			'cats' => '',
-			"show_uncat" => true
+			"show_uncat" => true,
+			"cats_orderby" => 'count'
 		], $atts);
 		ob_start();
 		require ISHA_WCPG_DIR . "inc/shortcode_cats_on_products_cb.php";
@@ -114,6 +115,10 @@ final class Isha_WCPG
 		if($cat_id > 0) {
 			$query = new WP_Query([
 				'post_type' => 'product',
+				'meta_query' => [[
+					'key' => '_thumbnail_id',
+					'compare' => 'EXISTS'
+				]],
 				'tax_query' => [[
 					'taxonomy' => 'product_cat',
 					'field' => 'id',

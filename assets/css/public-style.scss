@@ -35,9 +35,7 @@ $desktopWidth: 1150px;
 					font-size: 10px;
 					letter-spacing: 1px;
 					text-transform: uppercase;
-					background: #aaa;
-					color: #fff;
-					padding: 0 2px;
+					color: #777;
 					text-decoration: none;
 				}
 			}
@@ -154,8 +152,12 @@ $desktopWidth: 1150px;
 			margin-right: 10px;
 			cursor: pointer;
 			span {
-				padding: 5px 20px;
-				background-color: #fff;
+				padding: 10px 20px;
+				background-color: #eee;
+				border: 1px solid #eee;
+				border-radius: 20px;
+				display: inline-block;
+				margin: 10px 0;
 			}
 			&.isha-active {
 				span {
