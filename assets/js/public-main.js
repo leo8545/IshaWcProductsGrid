@@ -1,25 +1,6 @@
 console.log(
 	`######### Website Revamped by:: isharjeelahmad | isharjeelahmad@gmail.com | https://github.com/leo8545 #########`
 );
-function elementInViewport2(el) {
-	var top = el.offsetTop;
-	var left = el.offsetLeft;
-	var width = el.offsetWidth;
-	var height = el.offsetHeight;
-
-	while (el.offsetParent) {
-		el = el.offsetParent;
-		top += el.offsetTop;
-		left += el.offsetLeft;
-	}
-
-	return (
-		top < window.pageYOffset + window.innerHeight &&
-		left < window.pageXOffset + window.innerWidth &&
-		top + height > window.pageYOffset &&
-		left + width > window.pageXOffset
-	);
-}
 document.addEventListener("DOMContentLoaded", (e) => {
 	const cats = document.querySelectorAll(".isha_wcpg_cat");
 	const wrapper = document.querySelector(".isha_cats_products_wrapper");
@@ -92,20 +73,5 @@ document.addEventListener("DOMContentLoaded", (e) => {
 				}
 			});
 		});
-	}
-	// If a div is in viewport
-	function isInViewport(element) {
-		const rect = element.getBoundingClientRect();
-		return (
-			rect.top >= 0 &&
-			rect.left >= 0 &&
-			rect.bottom <=
-				(window.innerHeight || document.documentElement.clientHeight) &&
-			rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-		);
-	}
-
-	if (elementInViewport2(document.querySelector("footer"))) {
-		console.log("yeah");
 	}
 });
