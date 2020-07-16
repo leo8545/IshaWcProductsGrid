@@ -100,7 +100,8 @@ final class Isha_WCPG
 			'product_count' => 5,
 			'cats' => '',
 			"show_uncat" => true,
-			"cats_orderby" => 'count'
+			"cats_orderby" => 'count',
+			'show_product_with_image_only' => true
 		], $atts);
 		ob_start();
 		require ISHA_WCPG_DIR . "inc/shortcode_cats_on_products_cb.php";

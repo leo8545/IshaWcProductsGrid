@@ -41,14 +41,18 @@ if( !empty( $atts['cats'] ) ) {
 		'order' => 'desc'
 	]);
 }
+$meta_query = [];
+if( !isha_wcpg_is_falsy( $atts['show_product_with_image_only'] ) ) {
+	$meta_query[] = [
+		'key' => '_thumbnail_id',
+		'compare' => 'EXISTS'
+	];
+}
 
 $args = [
 	'post_type' => 'product',
 	'post_status' => 'publish',
-	'meta_query' => [[
-		'key' => '_thumbnail_id',
-		'compare' => 'EXISTS'
-	]],
+	'meta_query' => $meta_query,
 	'tax_query' => [[
 		'taxonomy' => 'product_cat',
 		'field' => 'slug',
